@@ -1,39 +1,21 @@
 <div>
-  <button
-    mat-raised-button
-    [color]="color"
-    (mouseover)="color = 'warn'"
-    (mouseout)="color = 'accent'"
-  >
+  <button mat-raised-button [color]="color" (mouseover)="color = 'warn'" (mouseout)="color = 'accent'">
     Add Employment Details
   </button>
 </div>
 <div>
-  <button
-    mat-raised-button
-    [color]="color"
-    (mouseover)="color = 'warn'"
-    (mouseout)="color = 'accent'"
-  >
-  Add Income Details
-</button>
+  <button mat-raised-button [color]="color" (mouseover)="color = 'warn'" (mouseout)="color = 'accent'">
+    Add Income Details
+  </button>
 </div>
 <div>
-  <button
-    mat-raised-button
-    [color]="color"
-    (mouseover)="color = 'warn'"
-    (mouseout)="color = 'accent'"
-  >
-  RO Verifications   </button>
+  <button mat-raised-button [color]="color" (mouseover)="color = 'warn'" (mouseout)="color = 'accent'"
+    (click)="openRoVerification()">
+    RO Verifications
+  </button>
 </div>
 <div>
-  <button
-    mat-raised-button
-    [color]="color"
-    (mouseover)="color = 'warn'"
-    (mouseout)="color = 'accent'"
-  >
+  <button mat-raised-button [color]="color" (mouseover)="color = 'warn'" (mouseout)="color = 'accent'">
     Deviation
   </button>
 </div>

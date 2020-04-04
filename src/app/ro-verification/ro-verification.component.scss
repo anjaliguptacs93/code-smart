@@ -1,0 +1,66 @@
+.ro-btn{
+  background-color: lightgray;
+  border-radius: 25px;
+
+}
+.ro-width{
+  width: 40%;
+}
+.ro-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+.remarks-box{
+  width: 260px;
+  height: 85px;
+}
+
+.button {
+    margin-top: 10px;
+    }
+table {
+  width: 100%;
+}
+.table-border td, table-border th {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: center;
+}
+.table-border th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: aliceblue;
+  color: black;
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+.agencyName{
+  width: 50%;
+  float: left;
+}
+.pfid{
+  float: right;
+  width: 50%;
+}
+.decision-date{
+  width: 50%;
+  float: left;
+}
+.agency-email{
+  width: 50%;
+  float: right;
+}
+.cancel-btn{
+  border-radius: 25px;
+  float: right;
+
+}
+.save-btn{
+  background-color: #2196F3;
+  border-radius: 25px;
+  color: white;
+  float: right;
+}
+      

@@ -1,4 +1,6 @@
 import { Component } from "@angular/core";
+import { RoVerificationComponent } from "./ro-verification/ro-verification.component";
+import { MatDialog } from "@angular/material/dialog";
 
 /**
  * @title Basic buttons
@@ -9,7 +11,15 @@ import { Component } from "@angular/core";
   styleUrls: ["button-overview-example.css"]
 })
 export class ButtonOverviewExample {
+  constructor(public dialog: MatDialog) {}
   color = "accent";
+
+  openRoVerification() {
+    let dialogRef = this.dialog.open(RoVerificationComponent, {
+      height: "400px",
+      width: "600px"
+    });
+  }
 }
 
 /**  Copyright 2019 Google LLC. All Rights Reserved.

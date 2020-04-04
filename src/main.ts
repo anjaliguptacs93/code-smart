@@ -1,15 +1,16 @@
-import './polyfills';
+import "./polyfills";
 
-import {HttpClientModule} from '@angular/common/http';
-import {NgModule} from '@angular/core';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {MatNativeDateModule} from '@angular/material/core';
-import {BrowserModule} from '@angular/platform-browser';
-import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {DemoMaterialModule} from './app/material-module';
+import { HttpClientModule } from "@angular/common/http";
+import { NgModule } from "@angular/core";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { MatNativeDateModule } from "@angular/material/core";
+import { BrowserModule } from "@angular/platform-browser";
+import { platformBrowserDynamic } from "@angular/platform-browser-dynamic";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { DemoMaterialModule } from "./app/material-module";
 
-import {ButtonOverviewExample} from './app/button-overview-example';
+import { ButtonOverviewExample } from "./app/button-overview-example";
+import { RoVerificationComponent } from "./app/ro-verification/ro-verification.component";
 
 @NgModule({
   imports: [
@@ -19,18 +20,18 @@ import {ButtonOverviewExample} from './app/button-overview-example';
     HttpClientModule,
     DemoMaterialModule,
     MatNativeDateModule,
-    ReactiveFormsModule,
+    ReactiveFormsModule
   ],
-  entryComponents: [ButtonOverviewExample],
-  declarations: [ButtonOverviewExample],
+  entryComponents: [ButtonOverviewExample, RoVerificationComponent],
+  declarations: [ButtonOverviewExample, RoVerificationComponent],
   bootstrap: [ButtonOverviewExample],
   providers: []
 })
 export class AppModule {}
 
-platformBrowserDynamic().bootstrapModule(AppModule)
+platformBrowserDynamic()
+  .bootstrapModule(AppModule)
   .catch(err => console.error(err));
-
 
 /**  Copyright 2019 Google LLC. All Rights Reserved.
     Use of this source code is governed by an MIT-style license that
