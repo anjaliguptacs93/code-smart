@@ -1,16 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
-export interface Profile {
-  pfId?: string;
-  name: string;
-  num: string;
-  email: string;
-}
-
-const DATA: Profile[] = [
-  { pfId: '1111', name: 'Anjali', num: '1111111', email: 'anjali@gmail.com' },
-  { pfId: '2222', name: 'Shraddha', num: '22222222', email: 'shraddha@gmail.com' }
-];
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+import *  as  data from '../../assets/profile.json';
+import { Profile } from 'src/interfaces/profile';
+import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: "app-ro-verification",
@@ -21,15 +13,15 @@ export class RoVerificationComponent implements OnInit {
   displayedColumns: string[] = ["name", "num", "email"];
   roVerificationForm = new FormGroup({
     entityType: new FormControl(""),
-    pfId: new FormControl(""),
+    pfId: new FormControl('', Validators.required),
     name: new FormControl(""),
     mobile: new FormControl(""),
     email: new FormControl(""),
     remarks: new FormControl(""),
-    agencyName: new FormControl(""),
-    agencyUserName: new FormControl(""),
-    agencyEmail: new FormControl(""),
-    agencyMobile: new FormControl("")
+    agencyName: new FormControl('', Validators.required),
+    agencyUserName: new FormControl('', Validators.required),
+    agencyEmail: new FormControl('', Validators.required),
+    agencyMobile: new FormControl('', Validators.required)
   });
 
   entityType = 'bankOfficer';
@@ -38,24 +30,26 @@ export class RoVerificationComponent implements OnInit {
   agencyUserName = '';
   agencyEmail = '';
   agencyMobile = '';
-  dataSource: Profile[];
-  data = { name: '', num: '', email: '' };
+  listData: any = data;
+  dataSource: any;
+  showUserProfile = false;
+  showDownloadButton = false;
+  username: any;
 
-  constructor() {
+  constructor(private dialogRef: MatDialogRef<RoVerificationComponent>) {
   }
 
   ngOnInit() {
+    this.dataSource = this.listData.default;
+  }
+
+  closeDialog() {
+    this.dialogRef.close();
   }
 
   showProfile() {
-    console.log(this.pfId);
-    DATA.forEach(res => {
-      if (res.pfId == this.pfId) {
-        this.data.name = res.name;
-        this.data.email = res.email;
-        this.data.num = res.num;
-      }
-    })
+    this.showUserProfile = (this.pfId.length >= 4) ? true : false;
+    this.username = this.listData.default[0].name;
   }
 
   selectAgencyName() {
@@ -64,6 +58,10 @@ export class RoVerificationComponent implements OnInit {
 
   onSubmit() {
     console.log(this.roVerificationForm.value);
+  }
+
+  showDownload() {
+    this.showDownloadButton = true;
   }
 
 }

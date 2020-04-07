@@ -1,8 +1,9 @@
+<div class="ro-ver-heading"><span>RO Verification</span></div>
 <mat-tab-group animationDuration="0ms">
   <mat-tab label="Initiate RO Verification">
     <form [formGroup]="roVerificationForm" (ngSubmit)="onSubmit()">
 
-      <div>
+      <div class="entity">
         <div>
           <mat-label>Select Entity Type</mat-label>
         </div>
@@ -19,23 +20,24 @@
             <mat-label>PF ID:</mat-label>
             <input matInput placeholder="Enter PF ID" formControlName="pfId" [(ngModel)]="pfId" (keyup)="showProfile()">
           </mat-form-field>
-
-          <table mat-table [dataSource]="dataSource" class="table-border">
-            <ng-container matColumnDef="name">
-              <th mat-header-cell *matHeaderCellDef>Officer Name</th>
-              <td mat-cell *matCellDef="let element"> {{element.name}} </td>
-            </ng-container>
-            <ng-container matColumnDef="num">
-              <th mat-header-cell *matHeaderCellDef>Phone Number</th>
-              <td mat-cell *matCellDef="let element"> {{element.num}} </td>
-            </ng-container>
-            <ng-container matColumnDef="email">
-              <th mat-header-cell *matHeaderCellDef>Email</th>
-              <td mat-cell *matCellDef="let element"> {{element.email}} </td>
-            </ng-container>
-            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-          </table>
+          <div *ngIf="showUserProfile">
+            <table mat-table [dataSource]="dataSource" class="table-border">
+              <ng-container matColumnDef="name">
+                <th mat-header-cell *matHeaderCellDef>Officer Name</th>
+                <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+              </ng-container>
+              <ng-container matColumnDef="num">
+                <th mat-header-cell *matHeaderCellDef>Phone Number</th>
+                <td mat-cell *matCellDef="let element"> {{element.num}} </td>
+              </ng-container>
+              <ng-container matColumnDef="email">
+                <th mat-header-cell *matHeaderCellDef>Email</th>
+                <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+              </ng-container>
+              <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+              <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+          </div>
         </div>
       </div>
 
@@ -71,17 +73,18 @@
           </mat-form-field>
         </div>
 
-
       </div>
 
-      <div><span>Remarks:</span></div>
-      <textarea type="text" placeholder="Enter Remarks, if any" class="remarks-box"></textarea>
+      <div class="remarks">
+        <div><span>Remarks:</span></div>
+        <textarea type="text" placeholder="Enter Remarks, if any" class="remarks-box"></textarea>
+      </div>
     </form>
     <div class="button">
-      <button mat-button class="ro-btn" type="button">Generate Ro Verification Form</button>
+      <button mat-button class="ro-btn" type="button" (click)="showDownload()">Generate Ro Verification Form</button>
     </div>
 
-    <div class="button">
+    <div class="button" *ngIf="showDownloadButton">
       <button mat-button class="ro-btn">Download Ro Verification Report</button>
     </div>
 
@@ -92,8 +95,9 @@
 
   <mat-tab label="Update Decision of RO Verification">
 
-    <div><span>Enter details of the action taken on the Residence and Office (RO) report</span></div>
-    <div>RO Verification Conducted by 555555 - Anjali, PO</div>
+    <div class="update-decision-heading"><span>Enter details of the action taken on the Residence and Office (RO)
+        report</span></div>
+    <div>RO Verification Conducted by {{pfId}} - {{username}}</div>
 
     <div class="decision-date">
       <mat-form-field>
@@ -114,11 +118,13 @@
       </mat-form-field>
     </div>
 
-    <div><span>Remarks:</span></div>
-    <textarea type="text" placeholder="Enter Remarks, if any" class="remarks-box"></textarea>
+    <div class="remarks">
+      <div><span>Remarks:</span></div>
+      <textarea type="text" placeholder="Enter Remarks, if any" class="remarks-box"></textarea>
+    </div>
 
     <div class="button">
-      <button mat-button class="cancel-btn">Cancel</button>
+      <button mat-button class="cancel-btn" (click)="closeDialog()">Cancel</button>
       <button mat-button class="save-btn">Save</button>
     </div>
 

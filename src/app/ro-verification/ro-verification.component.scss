@@ -1,7 +1,25 @@
 .ro-btn{
   background-color: lightgray;
   border-radius: 25px;
+}
 
+.ro-ver-heading{
+  background-color: blue;
+}
+
+.update-decision-heading{
+  padding-top: 20px;
+  padding-bottom: 10px;
+  font-size: 20px;
+}
+
+.remarks{
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.entity{
+  padding-top: 20px;
 }
 .ro-width{
   width: 40%;
@@ -40,6 +58,12 @@ table {
   width: 50%;
   float: left;
 }
+
+.appr-date{
+  width: 50%;
+  float: left;
+}
+
 .pfid{
   float: right;
   width: 50%;
